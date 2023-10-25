@@ -1,0 +1,8 @@
+Application Use Case:
+
+Create two web services
+index a CSV file with student information - name, class, address, age etc as index attributes. File upload (multipart) 
+search API - takes a string token as parameter and search through all attributes of index and return a list of students
+Use flask and elastic search
+Once web service is ready, test using postman
+Build a web page (HTML + JQuery) to upload CSV file and search for students - web developers will guide this step
