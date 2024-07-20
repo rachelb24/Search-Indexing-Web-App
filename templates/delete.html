@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Index</title>
+</head>
+<body>
+    <h2>Delete Index</h2>
+    <p>Use this page to delete the Elasticsearch index.</p>
+
+    <form id="delete-form">
+        <button type="submit">Delete Index</button>
+    </form>
+
+    <div id="delete-message"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#delete-form').submit(function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/delete_index',
+                    success: function(data) {
+                        $('#delete-message').html(data.message);
+                    },
+                    error: function(error) {
+                        $('#delete-message').html("An error occurred.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
