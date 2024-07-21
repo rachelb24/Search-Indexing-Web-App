@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Search Documents</h2>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<form id="search-form">
-    <input type="text" id="search-query" placeholder="Enter your search query">
-    <button type="submit">Search</button>
-</form>
-<div id="search-results"></div>
+<div class="card">
+    <div class="card-header">
+        <h2>Search Documents</h2>
+    </div>
+    <div class="card-body">
+        <form id="search-form" class="form-inline">
+            <div class="form-group mb-2">
+                <input type="text" id="search-query" class="form-control" placeholder="Enter your search query">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+        <div id="search-results" class="mt-3"></div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function() {
         $('#search-form').submit(function(event) {
@@ -19,7 +27,7 @@
                     displaySearchResults(data);
                 },
                 error: function(error) {
-                    $('#search-results').html("An error occurred.");
+                    $('#search-results').html("An error occurred.").addClass('alert alert-danger');
                 }
             });
         });
@@ -29,18 +37,18 @@
             var resultsHtml = '<h3>Search Results</h3>';
 
             if (results.length > 0) {
-                resultsHtml += '<ul>';
+                resultsHtml += '<table class="table table-bordered"><thead><tr><th>ID</th><th>Name</th><th>Nationality</th><th>City</th><th>Gender</th><th>Age</th></tr></thead><tbody>';
                 results.forEach(function(result) {
-                    resultsHtml += '<li>';
-                    resultsHtml += 'ID: ' + result.id + '<br>';
-                    resultsHtml += 'Name: ' + result.name + '<br>';
-                    resultsHtml += 'Nationality: ' + result.nationality + '<br>';
-                    resultsHtml += 'City: ' + result.city + '<br>';
-                    resultsHtml += 'Gender: ' + result.gender + '<br>';
-                    resultsHtml += 'Age: ' + result.age + '<br>';
-                    resultsHtml += '</li>';
+                    resultsHtml += '<tr>';
+                    resultsHtml += '<td>' + result.id + '</td>';
+                    resultsHtml += '<td>' + result.name + '</td>';
+                    resultsHtml += '<td>' + result.nationality + '</td>';
+                    resultsHtml += '<td>' + result.city + '</td>';
+                    resultsHtml += '<td>' + result.gender + '</td>';
+                    resultsHtml += '<td>' + result.age + '</td>';
+                    resultsHtml += '</tr>';
                 });
-                resultsHtml += '</ul>';
+                resultsHtml += '</tbody></table>';
             } else {
                 resultsHtml += '<p>No results found.</p>';
             }
