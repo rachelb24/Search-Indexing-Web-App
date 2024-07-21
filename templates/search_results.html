@@ -1,32 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Search Results</h2>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<div id="search-results-list">
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Nationality</th>
-                <th>City</th>
-                <th>Gender</th>
-                <th>Age</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for result in search_results %}
-                <tr>
-                    <td>{{ result.id }}</td>
-                    <td>{{ result.name }}</td>
-                    <td>{{ result.nationality }}</td>
-                    <td>{{ result.city }}</td>
-                    <td>{{ result.gender }}</td>
-                    <td>{{ result.age }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="card">
+    <div class="card-header">
+        <h2>Search Results</h2>
+    </div>
+    <div class="card-body">
+        <div id="search-results-list">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Nationality</th>
+                        <th>City</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in search_results %}
+                        <tr>
+                            <td>{{ result.id }}</td>
+                            <td>{{ result.name }}</td>
+                            <td>{{ result.nationality }}</td>
+                            <td>{{ result.city }}</td>
+                            <td>{{ result.gender }}</td>
+                            <td>{{ result.age }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}
